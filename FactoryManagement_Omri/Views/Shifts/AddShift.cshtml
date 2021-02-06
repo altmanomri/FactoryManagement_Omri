@@ -1,0 +1,31 @@
+﻿@model FactoryManagement_Omri.Models.Shift
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddShift</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+    <h3>Enter New Shift's details</h3>
+    <div>
+        <form action="/Shifts/GetNewShiftFromUser" method="post">
+            Date: @Html.TextBoxFor(x => x.Date)<br />
+            Start Time: @Html.TextBoxFor(x => x.StartTime)<br />
+            End Time: @Html.TextBoxFor(x => x.EndTime)<br />
+
+            <input type="submit" value="Save" /><br />
+            <ul>
+                <li>@Html.ActionLink("Back to Shifts", "Index", "Shifts")</li>
+                <li>@Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+            </ul>
+        </form>
+    </div><br />
+    <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+</body>
+</html>

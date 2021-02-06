@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+
+    <div>
+        <h1>Welcom To Factory Managemant Site</h1>
+        <ul>
+            <li>  @Html.ActionLink("Departments", "Index", "departments")</li>
+            <li>  @Html.ActionLink("Employees", "Index", "Employees")</li>
+            <li>  @Html.ActionLink("Shifts", "Index", "Shifts")</li>
+        </ul>
+    </div><br />
+    <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+</body>
+</html>

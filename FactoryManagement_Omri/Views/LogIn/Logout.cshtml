@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logout</title>
+</head>
+<body>
+    @if (ViewBag.IsOverLimit != null && ViewBag.IsOverLimit == true)
+    {
+        <h2>Unable to proceed due to your activity limit, Please try again later.</h2>
+    }
+    <div> You have been loged out of the system.
+    </div>
+</body>
+</html>

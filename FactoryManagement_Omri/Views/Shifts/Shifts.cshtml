@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shifts</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+    <div>
+        <h5>Morning shift - 08:00-16:00</h5>
+        <h5>Evening shift - 16:00-24:00</h5>
+        <table border="1">
+            <tr><th>ID</th><th>Date</th><th>Time</th><th>Employees</th></tr>
+            @foreach (var shift in ViewBag.Shifts)
+            {
+                <tr>
+                    <td>@shift.ShiftId</td>
+                    <td>@shift.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@shift.Time</td>
+                    <td>
+                        <ol>
+                            @foreach (var emp in shift.Employees)
+                            {
+                                <li>@emp.FullName @Html.ActionLink("Edit", "EditEmployee", "Employees", new { id = emp.EmployeeId }, null) </li>
+                            }
+                        </ol>
+                    </td>
+                </tr>
+            }
+        </table>
+        <ul>
+            <li>@Html.ActionLink("Add Shift", "AddShift", "Shifts")</li>
+            <li> @Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+        </ul>
+    </div><br />
+    <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+</body>
+</html>

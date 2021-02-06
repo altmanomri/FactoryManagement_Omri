@@ -1,0 +1,35 @@
+﻿@model FactoryManagement_Omri.Models.Department
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewDepartment</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+    <div> 
+        <form action="/Departments/GetNewDepartmentFromUser" method="post">
+            Department Name: @Html.TextBoxFor(x => x.Name)<br />
+            
+           Select a Manager: @Html.DropDownListFor((x => x.Manager),
+                new List<SelectListItem> {
+                new SelectListItem{Text="Select Manager", Value=null},
+                new SelectListItem { Text="Hana Senesh", Value="4" },
+                new SelectListItem{Text="Golda meir", Value="2"},
+                new SelectListItem { Text="Ezer Weizman", Value="3" }
+                })<br /><br />
+            <input type="submit" value="Add"/><br />
+        </form>
+        <ul>
+            <li>@Html.ActionLink("Back To Departments", "Index", "Departments")</li>
+            <li>@Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+        </ul><br />
+        <a>@Html.ActionLink("Log Out", "VoluntarylogOut","login")</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+    <h3>Employees Page</h3>
+    <div>
+        <form action="/Employees/EmployeeSearchResult" method="post">
+            Enter a name or a part of it, or name of a depatrmant or a part of it to search employee : <input name="phrase" type="text" /><br />
+
+            <input type="submit" value="Search" />
+        </form>
+        <table border="1">
+            <tr><th>ID</th><th>Name</th><th>Start Work Year</th><th>Department</th><th>Shift</th><th>Add Shift</th><th>Edit</th><th>Delete</th></tr>
+            @foreach (var employee in ViewBag.employee)
+            {
+                <tr>
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.FullName</td>
+                    <td>@employee.StartWorkYear</td>
+                    <td>@employee.Department</td>
+                    <td>
+                        <ol>
+                            @foreach (var shift in @employee.Shifts)
+                            {
+                                <li>Date: @shift.Date.ToString("dd/MM/yyyy") Time: @shift.StartTime - @shift.EndTime</li>
+                            }
+                        </ol>
+                    </td>
+                    <td>@Html.ActionLink("Add Shift", "AddShiftToEmployee", new { id = employee.EmployeeId })</td>
+                    <td>@Html.ActionLink("Edit", "EditEmployee", new { id = employee.EmployeeId })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteEmployee", new { id = employee.EmployeeId })</td>
+                </tr>
+            }
+        </table>
+        <ul>
+            <li>  @Html.ActionLink("Back to all employees", "Index", "Employees")</li>
+            <li> @Html.ActionLink("Add New Employee", "AddEmployee")</li>
+            <li> @Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+        </ul><br />
+        <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+    </div>
+</body>
+</html>

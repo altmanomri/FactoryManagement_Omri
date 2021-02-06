@@ -1,0 +1,31 @@
+﻿@model FactoryManagement_Omri.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewEmployee</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+    <h3>Enter New Employee's details</h3>
+    <div>
+        <form action="/Employees/GetEmployeeFromUser" method="post">
+            First Name: @Html.TextBoxFor(x => x.FirstName)<br />
+            Last Name: @Html.TextBoxFor(x => x.LastName)<br />
+            Start Work Year: @Html.TextBoxFor(x => x.StartWorkTear)<br />
+            Department: @Html.DropDownListFor(x => x.DepartmentID, new SelectList(ViewBag.Departments, "ID", "Name"))<br />
+            <input type="submit" value="Save" /><br />
+            <ul>
+                <li>@Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+                <li>@Html.ActionLink("Back to Employees", "Index", "Employees")</li>
+            </ul>
+        </form>
+    </div><br />
+    <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+</body>
+</html>

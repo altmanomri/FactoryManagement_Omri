@@ -1,0 +1,33 @@
+﻿@model FactoryManagement_Omri.Models.Department
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditDepartment</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+    <h3>Edit Department</h3>
+
+    <div>
+        <form action="/departments/GetEditedDepartmentFromUser" method="post">
+            ID: @Html.EditorFor(x => x.ID)<br /><br />
+            Department Name: @Html.EditorFor(x => x.Name)<br /><br />
+            Manager: @Html.DropDownListFor(x => x.Manager, new SelectList(ViewBag.Employees, "ID", "FirstName"))<br />
+
+            <input type="submit" value="Save" />
+        </form>
+        <ul>
+            <li>@Html.ActionLink("Back to Departments", "Index", "Departments")</li>
+            <li>@Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+        </ul><br />
+        <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+    </div>
+</body>
+</html>

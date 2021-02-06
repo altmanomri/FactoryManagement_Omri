@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Departments</title>
+</head>
+<body>
+    <h2>hello @ViewBag.userFlName</h2>
+
+    <div>
+        <h3>Departments</h3>
+        @{   @*shown if trying to delete department that has employee/s in it*@
+            if (!ViewBag.status)
+            {
+                <h4 style="color:red;">Unable to delete record at least 1 employee exsist in the department</h4>
+            }
+        }
+        <table border="1">
+            <tr><th>ID</th><th>Name</th><th>Manager</th><th>Edit</th><th>Delete</th></tr>
+            @foreach (var department in ViewBag.department)
+            {
+                <tr>
+                    <td>@department.ID</td>
+                    <td>@department.Name</td>
+                    <td>@department.Manager</td>
+
+                    <td>@Html.ActionLink("Edit", "EditDepartment", new { id = department.ID })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteDepartment", new { id = department.ID })</td>
+
+                </tr>
+            }
+        </table>
+        <ul>
+            <li>@Html.ActionLink("Add New Department", "AddDepartment")</li>
+            <li>@Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+        </ul><br />
+        <a>@Html.ActionLink("Log Out", "VoluntarylogOut","login")</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmployeeSerchResult</title>
+</head>
+<body>
+    <div>
+        <h2>hello @ViewBag.userFlName</h2>
+        <table border="1">
+            <tr><th>ID</th><th>Name</th><th>Start Work Year</th><th>Department</th><th>Shift</th></tr>
+            @foreach (var employeeR in ViewBag.emloyeesResult)
+            {
+                <tr>
+                    <td>@employeeR.ID</td>
+                    <td>@employeeR.FirstName  @employeeR.LastName</td>
+                    <td>@employeeR.StartWorkTear</td>
+                    <td>@employeeR.DepartmentID</td>
+                    <td>
+                        <ol>
+                            @foreach (var shifts in ViewBag.employee)
+                            {
+                                <li>Date: @shifts.ShiftDate @shifts.StartShift - @shifts.EndShift</li>
+                            }
+                        </ol>
+                    </td>
+                    <td></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <ul>
+        <li>@Html.ActionLink("Back to All Employees", "Index", "Employees")</li>
+        <li>@Html.ActionLink("Back Home", "HomePage", "HomePage")</li>
+    </ul><br />
+    <a>@Html.ActionLink("Log Out", "VoluntarylogOut", "login")</a>
+</body>
+</html>
